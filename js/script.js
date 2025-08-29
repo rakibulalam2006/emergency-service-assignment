@@ -12,15 +12,18 @@ for(let i = 0; i< hearts.length; i++){
 }
 //copy button
 const totalCopy = document.getElementById("total-copy")
+const titles = document.getElementsByClassName("service-title")
+const copied =document.querySelectorAll(".copy-btn");
 
- const copied =document.querySelectorAll(".copy-btn");
 for(let i = 0; i< copied.length; i++){
     copied[i].addEventListener("click",function(){
         let availableCopy = parseInt(totalCopy.innerText);
-        
+        let serviceName = titles[i].innerText;
+         alert(`copied ${serviceName}`)
         totalCopy.innerText = availableCopy + 1;
         
     })
+   
 }
 
 
@@ -35,11 +38,11 @@ const hotlineNumber = document.getElementsByClassName("calling-number");
 const historyList = document.getElementById("history-list");
 
 
-
 for(let i = 0; i < callBtn.length; i++){
     const btn = callBtn[i];
     const serviceName = title[i].innerText;
     const numbers = hotlineNumber[i].innerText;
+    
     btn.addEventListener("click",function(){
         if(totalCoin < 20){
             alert("you don't have enough coin");
@@ -47,15 +50,16 @@ for(let i = 0; i < callBtn.length; i++){
         }
         
         alert(`calling...
-        ${serviceName} at ${numbers}`);
+         ${serviceName} at ${numbers}`);
         totalCoin -= 20;
         document.getElementById("coin").innerText =totalCoin
 
         
-        const dateTime = new Date().toLocaleString();
+        const dateTime = new Date().toLocaleTimeString();
         
         const li = document.createElement("li");
-        li.innerText = `${serviceName} at ${numbers} on ${dateTime}`
+        li.innerText = `${serviceName} at ${numbers} on ${dateTime}`;
+        li. classList.add("history-item")
         historyList.appendChild(li);
         
     })
