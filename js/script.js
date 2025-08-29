@@ -19,7 +19,10 @@ for(let i = 0; i< copied.length; i++){
     copied[i].addEventListener("click",function(){
         let availableCopy = parseInt(totalCopy.innerText);
         let serviceName = titles[i].innerText;
-         alert(`copied ${serviceName}`)
+        const numbers = hotlineNumber[i].innerText;
+
+        navigator.clipboard.writeText(numbers);
+         alert(`copied ${serviceName} ${numbers}`)
         totalCopy.innerText = availableCopy + 1;
         
     })
@@ -49,8 +52,7 @@ for(let i = 0; i < callBtn.length; i++){
             return;
         }
         
-        alert(`calling...
-         ${serviceName} at ${numbers}`);
+        alert(`📞 calling ${serviceName} at ${numbers}...`);
         totalCoin -= 20;
         document.getElementById("coin").innerText =totalCoin
 
@@ -66,6 +68,7 @@ for(let i = 0; i < callBtn.length; i++){
 
 
 }
+//clear function
 const clearBtn = document.getElementById("clear-btn")
 clearBtn.addEventListener("click",function(){
     historyList.innerHTML = "";
